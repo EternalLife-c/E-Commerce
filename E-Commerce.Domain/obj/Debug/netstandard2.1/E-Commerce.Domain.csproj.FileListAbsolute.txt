@@ -1,0 +1,9 @@
+D:\Projects\E-Commerce\E-Commerce.Domain\bin\Debug\netstandard2.1\E-Commerce.Domain.deps.json
+D:\Projects\E-Commerce\E-Commerce.Domain\bin\Debug\netstandard2.1\E-Commerce.Domain.dll
+D:\Projects\E-Commerce\E-Commerce.Domain\bin\Debug\netstandard2.1\E-Commerce.Domain.pdb
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.AssemblyInfoInputs.cache
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.AssemblyInfo.cs
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.dll
+D:\Projects\E-Commerce\E-Commerce.Domain\obj\Debug\netstandard2.1\E-Commerce.Domain.pdb
