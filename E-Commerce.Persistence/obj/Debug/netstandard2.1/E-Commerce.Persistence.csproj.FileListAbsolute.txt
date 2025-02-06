@@ -1,9 +1,16 @@
 D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Persistence.deps.json
 D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Persistence.dll
 D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Persistence.pdb
+D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Application.dll
+D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Domain.dll
+D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Application.pdb
+D:\Projects\E-Commerce\E-Commerce.Persistence\bin\Debug\netstandard2.1\E-Commerce.Domain.pdb
+D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.csproj.AssemblyReference.cache
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.AssemblyInfoInputs.cache
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.AssemblyInfo.cs
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.csproj.CoreCompileInputs.cache
+D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.sourcelink.json
+D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commer.EC1A60A9.Up2Date
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.dll
 D:\Projects\E-Commerce\E-Commerce.Persistence\obj\Debug\netstandard2.1\E-Commerce.Persistence.pdb

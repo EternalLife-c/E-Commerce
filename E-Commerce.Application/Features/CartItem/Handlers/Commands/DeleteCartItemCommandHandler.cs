@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.CartItem.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
+using E_Commerce.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -21,10 +23,13 @@ namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
         public async Task<Unit> Handle(DeleteCartItemCommand request, CancellationToken cancellationToken)
         {
             var cartItem = await _cartItemRepository.Get(request.Id);
-            if (cartItem != null)
+
+            if (cartItem == null)
             {
-                await _cartItemRepository.Delete(cartItem);
-            }                
+                throw new NotFoundException(nameof(Domain.CartItem), request.Id);
+            }
+
+            await _cartItemRepository.Delete(cartItem);
             return Unit.Value;
         }
     }

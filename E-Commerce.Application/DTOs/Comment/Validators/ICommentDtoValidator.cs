@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Persistence.Contracts;
+﻿using E_Commerce.Application.Contracts.Persistence;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -26,9 +26,6 @@ namespace E_Commerce.Application.DTOs.Comment.Validators
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MaximumLength(1000).WithMessage("{PropertyName} cannot exceed 150 characters.")
                 .MinimumLength(10).WithMessage("{PropertyName} cannot exceed 150 characters.");
-
-            RuleFor(e => e.PostedDate)
-                .LessThanOrEqualTo(DateTime.Now).WithMessage("Posted date cannot be in the future.");
 
             RuleFor(e => e.UserId)
                 .GreaterThan(0).WithMessage("{PropertyName} does not exist.")

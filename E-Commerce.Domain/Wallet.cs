@@ -6,7 +6,7 @@ using System.Transactions;
 
 namespace E_Commerce.Domain
 {
-    public class Wallet : BaseEntity
+    public class Wallet : BaseDomainEntity
     {
         public decimal Balance { get; set; }
         public int UserId { get; set; }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Category.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,13 @@ namespace E_Commerce.Application.Features.Category.Handlers.Commands
         public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await _categoryRepository.Get(request.Id);
-            if(category != null)
+
+            if (category == null)
             {
-                await _categoryRepository.Delete(category);
+                throw new NotFoundException(nameof(Domain.Category), request.Id);
             }
+
+            await _categoryRepository.Delete(category);
             return Unit.Value;
         }
     }

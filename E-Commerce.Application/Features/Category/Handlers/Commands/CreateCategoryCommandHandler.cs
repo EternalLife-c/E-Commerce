@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.DTOs.Category.Validators;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Category.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using E_Commerce.Domain;
 using MediatR;
 using System;
@@ -24,6 +26,14 @@ namespace E_Commerce.Application.Features.Category.Handlers.Commands
         }
         public async Task<int> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
+            #region Validation
+            var validator = new CreateCategoryDtoValidator();
+            var validationResult = await validator.ValidateAsync(request.CreateCategoryDto);
+
+            if (validationResult.IsValid == false)
+                throw new ValidationException(validationResult);
+            #endregion
+
             var category =_mapper.Map<Domain.Category>(request.CreateCategoryDto);
             await _categoryRepository.Add(category);
             return request.CreateCategoryDto.Id;

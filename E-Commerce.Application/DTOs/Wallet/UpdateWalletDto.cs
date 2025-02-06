@@ -8,7 +8,6 @@ namespace E_Commerce.Application.DTOs.Wallet
 {
     public class UpdateWalletDto : BaseDto, IWalletDto
     {
-        public decimal Balance { get; set; }
         public int UserId { get; set; }
         public ICollection<TransactionDto> Transactions { get; set; }
     }

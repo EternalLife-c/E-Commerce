@@ -5,7 +5,7 @@ using System.Text;
 
 namespace E_Commerce.Domain
 {
-    public class CartItem : BaseEntity
+    public class CartItem : BaseDomainEntity
     {
         public int Quantity { get; set; }
         public decimal Price { get; set; }

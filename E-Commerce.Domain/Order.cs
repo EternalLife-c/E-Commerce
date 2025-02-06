@@ -7,7 +7,7 @@ using System.Text;
 
 namespace E_Commerce.Domain
 {
-    public class Order : BaseEntity
+    public class Order : BaseDomainEntity
     {
         public DateTime OrderDate { get; set; }
         public Decimal TotalAmount { get; set; }

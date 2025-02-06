@@ -1,5 +1,7 @@
-﻿using E_Commerce.Application.Features.User.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+﻿using E_Commerce.Application.Exceptions;
+using E_Commerce.Application.Features.User.Requests.Commands;
+using E_Commerce.Application.Contracts.Persistence;
+using E_Commerce.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,10 @@ namespace E_Commerce.Application.Features.User.Handlers.Commands
         public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.Get(request.Id);
+
+            if (user == null)
+                throw new NotFoundException(nameof(Domain.User), request.Id);
+
             await _userRepository.Delete(user);
             return Unit.Value;
         }

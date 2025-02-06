@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Comment.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
+using E_Commerce.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,12 @@ namespace E_Commerce.Application.Features.Comment.Handlers.Commands
         public async Task<Unit> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
         {
             var comment = await _commentRepository.Get(request.Id);
+
+            if (comment == null)
+            {
+                throw new NotFoundException(nameof(Domain.Comment), request.Id);
+            }
+
             await _commentRepository.Delete(comment);
             return Unit.Value;
         }

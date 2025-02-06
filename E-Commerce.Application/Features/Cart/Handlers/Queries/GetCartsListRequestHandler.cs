@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using E_Commerce.Application.DTOs.Cart;
 using E_Commerce.Application.Features.Cart.Requests.Queries;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;

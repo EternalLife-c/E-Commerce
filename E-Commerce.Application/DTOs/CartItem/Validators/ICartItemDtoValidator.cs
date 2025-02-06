@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Persistence.Contracts;
+﻿using E_Commerce.Application.Contracts.Persistence;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -17,10 +17,12 @@ namespace E_Commerce.Application.DTOs.CartItem.Validators
             _productRepository = productRepository;
 
             RuleFor(e => e.Quantity)
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
-
-            RuleFor(e => e.Price)
-                .GreaterThanOrEqualTo(0).WithMessage("{PropertyName} must be greater than or equal to 0.");
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.")
+                .MustAsync(async (cartItem, quantity, cancellationToken) =>
+                {
+                    var product = await _productRepository.Get(cartItem.ProductId);
+                    return product != null && quantity <= product.QuantityInStock;
+                }).WithMessage("{PropertyName} exceeds available stock.");
 
             RuleFor(e => e.CartId)
                 .GreaterThan(0).WithMessage("{PropertyName} does not exist.")

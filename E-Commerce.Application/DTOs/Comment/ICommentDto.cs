@@ -8,7 +8,6 @@ namespace E_Commerce.Application.DTOs.Comment
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime PostedDate { get; set; }
         public int UserId { get; set; }
         public int ProductId { get; set; }
     }

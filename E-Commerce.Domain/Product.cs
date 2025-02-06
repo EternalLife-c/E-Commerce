@@ -5,11 +5,12 @@ using System.Text;
 
 namespace E_Commerce.Domain
 {
-    public class Product : BaseEntity
+    public class Product : BaseDomainEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public int QuantityInStock { get; set; }
         public string ThumbnailPath { get; set; }
         public bool IsAvailable { get; set; } = true;
         public int? CategoryId { get; set; }

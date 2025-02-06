@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Persistence.Contracts;
+﻿using E_Commerce.Application.Contracts.Persistence;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

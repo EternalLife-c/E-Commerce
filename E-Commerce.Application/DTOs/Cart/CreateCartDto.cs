@@ -8,7 +8,6 @@ namespace E_Commerce.Application.DTOs.Cart
 {
     public class CreateCartDto : BaseDto, ICartDto
     {
-        public decimal TotalCartPrice { get; set; }
         public int UserId { get; set; }
         public ICollection<CartItemDto> CartItems { get; set; }
     }

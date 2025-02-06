@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using E_Commerce.Application.Features.CartItem.Requests.Queries;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using E_Commerce.Domain;
 using MediatR;
 using System;

@@ -8,6 +8,7 @@ D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerc
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.AssemblyInfoInputs.cache
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.AssemblyInfo.cs
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.csproj.CoreCompileInputs.cache
+D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.sourcelink.json
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commer.B20A53FF.Up2Date
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.dll
 D:\Projects\E-Commerce\E-Commerce.Application\obj\Debug\netstandard2.1\E-Commerce.Application.pdb

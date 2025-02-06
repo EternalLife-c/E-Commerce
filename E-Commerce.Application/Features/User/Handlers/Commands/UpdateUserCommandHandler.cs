@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.DTOs.User.Validators;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.User.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,16 @@ namespace E_Commerce.Application.Features.User.Handlers.Commands
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
+            #region Validation
+            var validator = new UpdateUserDtoValidator(_userRepository);
+            var validationResult = await validator.ValidateAsync(request.UpdateUserDto);
+
+            if (validationResult.IsValid == false)
+            {
+                throw new ValidationException(validationResult);
+            }
+            #endregion
+
             var User = await _userRepository.Get(request.UpdateUserDto.Id);
             _mapper.Map(request.UpdateUserDto, User);
             await _userRepository.Update(User);

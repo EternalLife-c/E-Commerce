@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Wallet.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
+using E_Commerce.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,10 @@ namespace E_Commerce.Application.Features.Wallet.Handlers.Commands
         public async Task<Unit> Handle(DeleteWalletCommand request, CancellationToken cancellationToken)
         {
             var wallet = await _walletRepository.Get(request.Id);
+
+            if (wallet == null)
+                throw new NotFoundException(nameof(Domain.Wallet), request.Id);
+
             await _walletRepository.Delete(wallet);
             return Unit.Value;
         }

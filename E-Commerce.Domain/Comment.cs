@@ -5,7 +5,7 @@ using System.Text;
 
 namespace E_Commerce.Domain
 {
-    public class Comment : BaseEntity
+    public class Comment : BaseDomainEntity
     {
         public string Title { get; set; }
         public string Content { get; set; }

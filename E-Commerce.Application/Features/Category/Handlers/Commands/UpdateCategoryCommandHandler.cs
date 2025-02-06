@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.DTOs.Category.Validators;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Category.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,14 @@ namespace E_Commerce.Application.Features.Category.Handlers.Commands
         }
         public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
+            #region Validation
+            var validator = new UpdateCategoryDtoValidator();
+            var validationResult = await validator.ValidateAsync(request.UpdateCategoryDto);
+
+            if (validationResult.IsValid == false)
+                throw new ValidationException(validationResult);
+            #endregion
+
             var category = await _categoryRepository.Get(request.UpdateCategoryDto.Id);
             _mapper.Map(request.UpdateCategoryDto, category);
             await _categoryRepository.Update(category);

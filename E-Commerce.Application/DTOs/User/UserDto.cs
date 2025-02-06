@@ -16,9 +16,6 @@ namespace E_Commerce.Application.DTOs.User
         public string Password { get; set; }
         public DateTime RegisterDate { get; set; }
         public bool IsAdmin { get; set; }
-        public int? WalletId { get; set; }
-        public int? CartId { get; set; }
         public ICollection<OrderDto> Orders { get; set; }
-        public ICollection<TransactionDto> Transactions { get; set; }
     }
 }

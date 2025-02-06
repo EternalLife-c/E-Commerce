@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Product.Requests.Commands;
-using E_Commerce.Application.Persistence.Contracts;
+using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,12 @@ namespace E_Commerce.Application.Features.Product.Handlers.Commands
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _productRepository.Get(request.Id);
+
+            if (product == null)
+            {
+                throw new NotFoundException(nameof(Domain.Product), request.Id);
+            }
+
             await _productRepository.Delete(product);
             return Unit.Value;
         }
