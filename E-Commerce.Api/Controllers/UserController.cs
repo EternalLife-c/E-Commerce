@@ -1,6 +1,6 @@
 ﻿using E_Commerce.Application.DTOs.User;
-using E_Commerce.Application.Features.Transaction.Requests.Queries;
 using E_Commerce.Application.Features.User.Requests.Commands;
+using E_Commerce.Application.Features.User.Requests.Queries;
 using E_Commerce.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,7 @@ namespace E_Commerce.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<User>>> Get()
         {
-            var users = await _mediator.Send(new GetTransactionsListRequest());
+            var users = await _mediator.Send(new GetUsersListRequest());
             return Ok(users);
         }
 
@@ -32,7 +32,7 @@ namespace E_Commerce.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> Get(int id)
         {
-            var user = await _mediator.Send(new GetTransactionRequest { Id = id });
+            var user = await _mediator.Send(new GetUserRequest { Id = id });
             return Ok(user);
         }
 

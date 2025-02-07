@@ -128,11 +128,14 @@ namespace E_Commerce.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("IsDone")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("PaymentStatus")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
@@ -213,35 +216,6 @@ namespace E_Commerce.Persistence.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("E_Commerce.Domain.Transaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("Successful")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WalletId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WalletId");
-
-                    b.ToTable("Transactions");
-                });
-
             modelBuilder.Entity("E_Commerce.Domain.User", b =>
                 {
                     b.Property<int>("Id")
@@ -270,27 +244,6 @@ namespace E_Commerce.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("E_Commerce.Domain.Wallet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Wallets");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Cart", b =>
@@ -381,28 +334,6 @@ namespace E_Commerce.Persistence.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("E_Commerce.Domain.Transaction", b =>
-                {
-                    b.HasOne("E_Commerce.Domain.Wallet", "Wallet")
-                        .WithMany("Transactions")
-                        .HasForeignKey("WalletId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Wallet");
-                });
-
-            modelBuilder.Entity("E_Commerce.Domain.Wallet", b =>
-                {
-                    b.HasOne("E_Commerce.Domain.User", "User")
-                        .WithOne("Wallet")
-                        .HasForeignKey("E_Commerce.Domain.Wallet", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("E_Commerce.Domain.Cart", b =>
                 {
                     b.Navigation("CartItems");
@@ -428,13 +359,6 @@ namespace E_Commerce.Persistence.Migrations
                     b.Navigation("Cart");
 
                     b.Navigation("Orders");
-
-                    b.Navigation("Wallet");
-                });
-
-            modelBuilder.Entity("E_Commerce.Domain.Wallet", b =>
-                {
-                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

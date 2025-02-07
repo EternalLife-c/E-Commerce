@@ -6,13 +6,8 @@ using E_Commerce.Application.DTOs.Comment;
 using E_Commerce.Application.DTOs.Order;
 using E_Commerce.Application.DTOs.OrderItem;
 using E_Commerce.Application.DTOs.Product;
-using E_Commerce.Application.DTOs.Transaction;
 using E_Commerce.Application.DTOs.User;
-using E_Commerce.Application.DTOs.Wallet;
 using E_Commerce.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace E_Commerce.Application.Profiles
 {
@@ -47,7 +42,7 @@ namespace E_Commerce.Application.Profiles
             #region Order
             CreateMap<Order, OrderDto>().ReverseMap();
             CreateMap<Order, CreateOrderDto>().ReverseMap();
-            CreateMap<Order, UpdateOrderDto>().ReverseMap();
+            CreateMap<Order, UpdateOrderStatusDto>().ReverseMap();
             #endregion
 
             #region OrderItem
@@ -62,23 +57,12 @@ namespace E_Commerce.Application.Profiles
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             #endregion
 
-            #region Transaction
-            CreateMap<Transaction, TransactionDto>().ReverseMap();
-            CreateMap<Transaction, CreateTransactionDto>().ReverseMap();
-            CreateMap<Transaction, UpdateTransactionDto>().ReverseMap();
-            #endregion
-
             #region User
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, CreateUserDto>().ReverseMap();
             CreateMap<User, UpdateUserDto>().ReverseMap();
             #endregion
 
-            #region Wallet
-            CreateMap<Wallet, WalletDto>().ReverseMap();
-            CreateMap<Wallet, CreateWalletDto>().ReverseMap();
-            CreateMap<Wallet, UpdateWalletDto>().ReverseMap();
-            #endregion
         }
     }
 }

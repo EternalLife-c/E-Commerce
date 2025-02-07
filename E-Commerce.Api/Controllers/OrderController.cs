@@ -48,9 +48,9 @@ namespace E_Commerce.Api.Controllers
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] UpdateOrderDto order)
+        public async Task<ActionResult> Put(int id, [FromBody] UpdateOrderStatusDto order)
         {
-            var command = new UpdateOrderCommand { UpdateOrderDto = order };
+            var command = new UpdateOrderStatusCommand { UpdateOrderStatusDto = order };
             var response = _mediator.Send(command);
             return NoContent();
         }

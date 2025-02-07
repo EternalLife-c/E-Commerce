@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Application.Contracts.Infrastructure;
 using E_Commerce.Application.Models;
 using E_Commerce.Infrastructure.Mail;
+using E_Commerce.Infrastructure.Payment;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,6 +17,7 @@ namespace E_Commerce.Infrastructure
         {
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             return services;
         }

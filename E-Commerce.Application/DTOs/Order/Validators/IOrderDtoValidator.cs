@@ -21,10 +21,6 @@ namespace E_Commerce.Application.DTOs.Order.Validators
                     var UserExists = await _userRepository.Exsits(id);
                     return !UserExists;
                 }).WithMessage("{PropertyName} does not exist.");
-
-            RuleFor(e => e.OrderItems)
-                .NotNull().WithMessage("{PropertyName} cannot be null.")
-                .NotEmpty().WithMessage("{PropertyName} cannot be empty.");
         }
     }
 }

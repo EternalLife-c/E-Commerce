@@ -41,6 +41,8 @@ namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
 
             var cartItem = await _cartItemRepository.Get(request.UpdateCartItemDto.Id);
             _mapper.Map<CartItemDto>(cartItem);
+            cartItem.Price = cartItem.Product.Price;
+
             await _cartItemRepository.Update(cartItem);
             return Unit.Value;
         }

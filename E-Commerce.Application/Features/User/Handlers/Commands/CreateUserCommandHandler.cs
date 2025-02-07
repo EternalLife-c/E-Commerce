@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Contracts.Persistence;
 using E_Commerce.Application.DTOs.User.Validators;
-using E_Commerce.Application.DTOs.Wallet.Validators;
 using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.User.Requests.Commands;
-using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -37,6 +34,9 @@ namespace E_Commerce.Application.Features.User.Handlers.Commands
             #endregion
 
             var user = _mapper.Map<Domain.User>(request.CreateUserDto);
+            user.RegisterDate = DateTime.Now;
+            user.IsAdmin = false;
+
             await _userRepository.Add(user);
             return user.Id;
         }

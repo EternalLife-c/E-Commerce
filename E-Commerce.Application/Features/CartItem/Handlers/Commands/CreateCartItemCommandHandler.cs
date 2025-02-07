@@ -41,6 +41,8 @@ namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
             #endregion
 
             var cartItem = _mapper.Map<Domain.CartItem>(request.CreateCartItemDto);
+            cartItem.Price = cartItem.Product.Price;
+
             cartItem = await _cartItemRepository.Add(cartItem);
             return cartItem.Id;
         }

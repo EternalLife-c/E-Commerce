@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using E_Commerce.Application.DTOs.CartItem.Validators;
 using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.DTOs.Cart.Validators;
+using System.Linq;
 
 namespace E_Commerce.Application.Features.Cart.Handlers.Commands
 {
@@ -39,6 +40,8 @@ namespace E_Commerce.Application.Features.Cart.Handlers.Commands
             #endregion
 
             var cart = _mapper.Map<Domain.Cart>(request.CreateCartDto);
+            cart.TotalCartPrice = cart.CartItems.Sum(c => c.Price * c.Quantity);
+
             await _cartRepository.Add(cart);
             return cart.Id;
         }

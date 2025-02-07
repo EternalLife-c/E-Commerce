@@ -24,19 +24,12 @@ namespace E_Commerce.Persistence
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Wallet> Wallets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .ApplyConfigurationsFromAssembly(typeof(E_CommerceDbContext).Assembly);
-            modelBuilder.Entity<Wallet>()
-                .HasMany(w => w.Transactions)
-                .WithOne(t => t.Wallet)
-                .HasForeignKey(t => t.WalletId)
-                .OnDelete(DeleteBehavior.Restrict); // Disable cascade delete
         }
     }
 }

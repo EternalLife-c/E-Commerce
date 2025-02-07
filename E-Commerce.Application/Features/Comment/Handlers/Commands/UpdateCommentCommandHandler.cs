@@ -41,6 +41,8 @@ namespace E_Commerce.Application.Features.Comment.Handlers.Commands
 
             var comment = await _commentRepository.Get(request.UpdateCommentDto.Id);
             _mapper.Map(request.UpdateCommentDto, comment);
+            comment.PostedDate = DateTime.Now;
+
             await _commentRepository.Update(comment);
             return Unit.Value;
         }

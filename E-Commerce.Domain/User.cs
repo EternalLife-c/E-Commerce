@@ -15,7 +15,6 @@ namespace E_Commerce.Domain
 
         //Navigation Properties
         public Cart? Cart { get; set; }
-        public Wallet? Wallet { get; set; }
         public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

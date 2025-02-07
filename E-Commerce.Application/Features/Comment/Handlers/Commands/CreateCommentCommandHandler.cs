@@ -41,6 +41,8 @@ namespace E_Commerce.Application.Features.Comment.Handlers.Commands
             #endregion
 
             var comment = _mapper.Map<Domain.Comment>(request.CreateCommentDto);
+            comment.PostedDate = DateTime.Now;
+
             await _commentRepository.Add(comment);
             return request.CreateCommentDto.Id;
         }

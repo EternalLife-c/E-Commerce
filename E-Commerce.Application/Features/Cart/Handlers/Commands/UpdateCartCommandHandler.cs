@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace E_Commerce.Application.Features.Cart.Handlers.Commands
 {
@@ -38,6 +39,8 @@ namespace E_Commerce.Application.Features.Cart.Handlers.Commands
 
             var cart = await _cartRepository.Get(request.UpdateCartDto.Id);
             _mapper.Map(request.UpdateCartDto, cart);
+            cart.TotalCartPrice = cart.CartItems.Sum(c => c.Price * c.Quantity);
+
             await _cartRepository.Update(cart);
             return Unit.Value;
         }

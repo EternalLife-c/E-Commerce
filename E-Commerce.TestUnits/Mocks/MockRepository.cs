@@ -9,6 +9,5 @@ namespace E_Commerce.TestUnits.Mocks
 {
     public static class MockRepository
     {
-        public static Mock<I>
     }
 }

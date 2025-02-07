@@ -23,6 +23,9 @@ namespace E_Commerce.Application.DTOs.Cart.Validators
                     var UserExists = await _userRepository.Exsits(id);
                     return !UserExists;
                 }).WithMessage("{PropertyName} does not exist.");
+
+            RuleFor(e => e.CartItems)
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty.");
         }
     }
 }

@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
+using E_Commerce.Application.Contracts.Persistence;
 using E_Commerce.Application.DTOs.Product.Validators;
-using E_Commerce.Application.DTOs.Transaction.Validators;
 using E_Commerce.Application.Exceptions;
 using E_Commerce.Application.Features.Product.Requests.Commands;
-using E_Commerce.Application.Contracts.Persistence;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
