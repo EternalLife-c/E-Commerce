@@ -9,8 +9,8 @@ namespace E_Commerce.Domain
     {
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public int OrderId { get; set; }
-        public int ProductId { get; set; }
+        public Guid OrderId { get; set; }
+        public Guid ProductId { get; set; }
 
         //Navigation Properties
         public Order Order { get; set; }

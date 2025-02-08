@@ -7,6 +7,6 @@ namespace E_Commerce.Application.Features.CartItem.Requests.Commands
 {
     public class DeleteCartItemCommand : IRequest<Unit>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

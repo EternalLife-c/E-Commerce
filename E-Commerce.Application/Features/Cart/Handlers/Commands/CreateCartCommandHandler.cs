@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace E_Commerce.Application.Features.Cart.Handlers.Commands
 {
-    public class CreateCartCommandHandler : IRequestHandler<CreateCartCommand, int>
+    public class CreateCartCommandHandler : IRequestHandler<CreateCartCommand, Unit>
     {
         private readonly ICartRepository _cartRepository;
         private readonly IUserRepository _userRepository;
@@ -29,7 +29,7 @@ namespace E_Commerce.Application.Features.Cart.Handlers.Commands
             _userRepository = userRepository;
             _mapper = mapper;
         }
-        public async Task<int> Handle(CreateCartCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCartCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateCartDtoValidator(_userRepository);
@@ -43,7 +43,7 @@ namespace E_Commerce.Application.Features.Cart.Handlers.Commands
             cart.TotalCartPrice = cart.CartItems.Sum(c => c.Price * c.Quantity);
 
             await _cartRepository.Add(cart);
-            return cart.Id;
+            return Unit.Value;
         }
     }
 }

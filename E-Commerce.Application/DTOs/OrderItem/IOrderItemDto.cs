@@ -9,7 +9,7 @@ namespace E_Commerce.Application.DTOs.OrderItem
     public interface IOrderItemDto
     {
         public int Quantity { get; set; }
-        public int OrderId { get; set; }
-        public int ProductId { get; set; }
+        public Guid OrderId { get; set; }
+        public Guid ProductId { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.Product.Handlers.Commands
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Unit>
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -23,7 +23,7 @@ namespace E_Commerce.Application.Features.Product.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateProductDtoValidator(_categoryRepository);
@@ -37,7 +37,7 @@ namespace E_Commerce.Application.Features.Product.Handlers.Commands
 
             var product = _mapper.Map<Domain.Product>(request.CreateProductDto);
             await _productRepository.Add(product);
-            return product.Id;
+            return Unit.Value;
         }
     }
 }

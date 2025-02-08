@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.Features.Category.Requests.Commands
 {
-    public class CreateCategoryCommand : IRequest<int>
+    public class CreateCategoryCommand : IRequest<Unit>
     {
         public CreateCategoryDto CreateCategoryDto { get; set; }
     }

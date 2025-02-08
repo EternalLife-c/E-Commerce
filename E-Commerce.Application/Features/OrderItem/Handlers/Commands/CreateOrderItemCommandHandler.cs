@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.OrderItem.Handlers.Commands
 {
-    public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemCommand, int>
+    public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemCommand, Unit>
     {
         private readonly IOrderItemRepository _orderItemRepository;
         private readonly IProductRepository _productRepository;
@@ -29,7 +29,7 @@ namespace E_Commerce.Application.Features.OrderItem.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateOrderItemCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateOrderItemCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateOrderItemDtoValidator(_productRepository, _orderRepository);
@@ -43,7 +43,7 @@ namespace E_Commerce.Application.Features.OrderItem.Handlers.Commands
 
             var orderItem = _mapper.Map<Domain.OrderItem>(request.CreateOrderItemDto);
             await _orderItemRepository.Add(orderItem);
-            return orderItem.Id;
+            return Unit.Value;
         }
     }
 }

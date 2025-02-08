@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.DTOs.Product
 {
-    public class CreateProductDto : BaseDto, IProductDto
+    public class CreateProductDto : IProductDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -14,7 +14,6 @@ namespace E_Commerce.Application.DTOs.Product
         public int QuantityInStock { get; set; }
         public string ThumbnailPath { get; set; }
         public bool IsAvailable { get; set; }
-        public int? CategoryId { get; set; }
-        public ICollection<CommentDto> Comments { get; set; }
+        public Guid? CategoryId { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace E_Commerce.Domain.Common
 {
     public class BaseDomainEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

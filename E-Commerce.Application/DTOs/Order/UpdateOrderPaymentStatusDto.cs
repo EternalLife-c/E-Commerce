@@ -7,7 +7,7 @@ namespace E_Commerce.Application.DTOs.Order
 {
     public class UpdateOrderPaymentStatusDto : BaseDto, IOrderDto
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public bool IsPaid { get; set; }
     }
 }

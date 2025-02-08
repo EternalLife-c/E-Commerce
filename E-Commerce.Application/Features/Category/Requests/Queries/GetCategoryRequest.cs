@@ -9,6 +9,6 @@ namespace E_Commerce.Application.Features.Category.Requests.Queries
 {
     public class GetCategoryRequest : IRequest<CategoryDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

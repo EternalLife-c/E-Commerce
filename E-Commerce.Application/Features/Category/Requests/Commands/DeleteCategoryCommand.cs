@@ -8,6 +8,6 @@ namespace E_Commerce.Application.Features.Category.Requests.Commands
 {
     public class DeleteCategoryCommand : IRequest<Unit>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

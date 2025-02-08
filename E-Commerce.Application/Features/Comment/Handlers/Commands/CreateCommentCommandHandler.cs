@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.Comment.Handlers.Commands
 {
-    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, int>
+    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, Unit>
     {
         private readonly ICommentRepository _commentRepository;
         private readonly IUserRepository _userRepository;
@@ -28,7 +28,7 @@ namespace E_Commerce.Application.Features.Comment.Handlers.Commands
             _productRepository = productRepository;
             _mapper = mapper;
         }
-        public async Task<int> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateCommentDtoValidator(_userRepository , _productRepository);
@@ -44,7 +44,7 @@ namespace E_Commerce.Application.Features.Comment.Handlers.Commands
             comment.PostedDate = DateTime.Now;
 
             await _commentRepository.Add(comment);
-            return request.CreateCommentDto.Id;
+            return Unit.Value;
         }
     }
 }

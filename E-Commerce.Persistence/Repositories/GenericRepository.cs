@@ -29,15 +29,15 @@ namespace E_Commerce.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> Exsits(int id)
+        public async Task<bool> Exsits(Guid Guid)
         {
-            var entity = await Get(id);
+            var entity = await Get(Guid);
             return entity != null;
         }
 
-        public async Task<T> Get(int id)
+        public async Task<T> Get(Guid Guid)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FindAsync(Guid);
         }
 
         public async Task<IReadOnlyList<T>> GetAll()

@@ -8,6 +8,6 @@ namespace E_Commerce.Application.Features.User.Requests.Queries
 {
     public class GetUserRequest : IRequest<UserDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

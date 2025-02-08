@@ -8,6 +8,6 @@ namespace E_Commerce.Application.Features.Order.Requests.Queries
 {
     public class GetOrderRequest : IRequest<OrderDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

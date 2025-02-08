@@ -24,16 +24,16 @@ namespace E_Commerce.Application.DTOs.OrderItem.Validators
                 }).WithMessage("{PropertyName} exceeds available stock.");
 
             RuleFor(e => e.OrderId)
-                .GreaterThan(0).WithMessage("{PropertyName} does not exist.")
-                .MustAsync(async (id, token) =>
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty or default.")
+                .Must(id => id != Guid.Empty).WithMessage("{PropertyName} cannot be an empty GUID.").MustAsync(async (id, token) =>
                 {
                     var OrderExists = await _orderRepository.Exsits(id);
                     return !OrderExists;
                 }).WithMessage("{PropertyName} does not exist.");
 
             RuleFor(e => e.ProductId)
-                .GreaterThan(0).WithMessage("{PropertyName} does not exist.")
-                .MustAsync(async (id, token) =>
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty or default.")
+                .Must(id => id != Guid.Empty).WithMessage("{PropertyName} cannot be an empty GUID.").MustAsync(async (id, token) =>
                 {
                     var productExists = await _productRepository.Exsits(id);
                     return !productExists;

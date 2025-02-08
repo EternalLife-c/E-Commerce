@@ -30,7 +30,7 @@ namespace E_Commerce.Api.Controllers
 
         // GET api/<CategoryController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> Get(int id)
+        public async Task<ActionResult<Category>> Get(Guid id)
         {
             var category = await _mediator.Send(new GetCategoryRequest { Id = id });
             return Ok(category);
@@ -47,7 +47,7 @@ namespace E_Commerce.Api.Controllers
 
         // PUT api/<CategoryController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] UpdateCategoryDto category)
+        public async Task<ActionResult> Put(Guid id, [FromBody] UpdateCategoryDto category)
         {
             var command = new UpdateCategoryCommand { UpdateCategoryDto = category };
             var response = await _mediator.Send(command);
@@ -56,7 +56,7 @@ namespace E_Commerce.Api.Controllers
 
         // DELETE api/<CategoryController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteCategoryCommand { Id = id };
             var response = await _mediator.Send(command);

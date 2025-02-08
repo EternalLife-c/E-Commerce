@@ -32,7 +32,7 @@ namespace E_Commerce.Application.DTOs.User.Validators
                     return !IsUnique;
                 }).WithMessage("{PropertyName} is already taken");
 
-            RuleFor(e => e.Password)
+            RuleFor(e => e.PasswordHash)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MinimumLength(8).WithMessage("{PropertyName} must be at least 8 characters long.")
                 .Matches("[A-Z]").WithMessage("{PropertyName} must contain at least one uppercase letter.")

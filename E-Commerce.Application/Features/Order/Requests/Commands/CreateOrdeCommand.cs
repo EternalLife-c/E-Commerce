@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.Features.Order.Requests.Commands
 {
-    public class CreateOrdeCommand : IRequest<int>
+    public class CreateOrdeCommand : IRequest<Unit>
     {
         public CreateOrderDto CreateOrderDto { get; set; }
     }

@@ -11,7 +11,7 @@ namespace E_Commerce.Application.DTOs.Order
         public Decimal TotalAmount { get; set; }
         public bool IsPaid { get; set; }
         public bool IsDone { get; set; }
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public ICollection<OrderItemDto> OrderItems { get; set; }
     }
 }

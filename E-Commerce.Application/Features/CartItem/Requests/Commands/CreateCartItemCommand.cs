@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.Features.CartItem.Requests.Commands
 {
-    public class CreateCartItemCommand : IRequest<int>
+    public class CreateCartItemCommand : IRequest<Unit>
     {
         public CreateCartItemDto CreateCartItemDto { get; set; }
     }

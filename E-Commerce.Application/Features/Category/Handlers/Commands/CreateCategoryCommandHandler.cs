@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.Category.Handlers.Commands
 {
-    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, int>
+    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Unit>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -24,7 +24,8 @@ namespace E_Commerce.Application.Features.Category.Handlers.Commands
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
-        public async Task<int> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+
+        public async Task<Unit> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateCategoryDtoValidator();
@@ -34,9 +35,9 @@ namespace E_Commerce.Application.Features.Category.Handlers.Commands
                 throw new ValidationException(validationResult);
             #endregion
 
-            var category =_mapper.Map<Domain.Category>(request.CreateCategoryDto);
+            var category = _mapper.Map<Domain.Category>(request.CreateCategoryDto);
             await _categoryRepository.Add(category);
-            return request.CreateCategoryDto.Id;
+            return Unit.Value;
         }
     }
 }

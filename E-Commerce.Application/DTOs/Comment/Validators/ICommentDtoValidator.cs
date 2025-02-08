@@ -28,16 +28,16 @@ namespace E_Commerce.Application.DTOs.Comment.Validators
                 .MinimumLength(10).WithMessage("{PropertyName} cannot exceed 150 characters.");
 
             RuleFor(e => e.UserId)
-                .GreaterThan(0).WithMessage("{PropertyName} does not exist.")
-                .MustAsync(async (id, token) =>
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty or default.")
+                .Must(id => id != Guid.Empty).WithMessage("{PropertyName} cannot be an empty GUID.").MustAsync(async (id, token) =>
                 {
                     var UserExists = await _userRepository.Exsits(id);
                     return !UserExists;
                 }).WithMessage("{PropertyName} does not exist.");
 
             RuleFor(e => e.ProductId)
-                .GreaterThan(0).WithMessage("{PropertyName} does not exist.")
-                .MustAsync(async (id, token) =>
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty or default.")
+                .Must(id => id != Guid.Empty).WithMessage("{PropertyName} cannot be an empty GUID.").MustAsync(async (id, token) =>
                 {
                     var productExists = await _productRepository.Exsits(id);
                     return !productExists;

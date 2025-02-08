@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Application.Contracts.Infrastructure;
 using E_Commerce.Application.Models;
 using E_Commerce.Infrastructure.Mail;
+using E_Commerce.Infrastructure.PasswordHash;
 using E_Commerce.Infrastructure.Payment;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ namespace E_Commerce.Infrastructure
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             return services;
         }

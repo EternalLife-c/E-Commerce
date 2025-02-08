@@ -8,7 +8,7 @@ namespace E_Commerce.Application.DTOs.Cart
 {
     public class UpdateCartDto : BaseDto, ICartDto
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public ICollection<CartItemDto> CartItems { get; set; }
     }
 }

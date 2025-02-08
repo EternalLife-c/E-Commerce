@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
 {
-    public class CreateCartItemCommandHandler : IRequestHandler<CreateCartItemCommand, int>
+    public class CreateCartItemCommandHandler : IRequestHandler<CreateCartItemCommand, Unit>
     {
         private readonly ICartItemRepository _cartItemRepository;
         private readonly ICartRepository _cartRepository;
@@ -30,7 +30,7 @@ namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateCartItemCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCartItemCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateCartItemDtoValidator(_cartRepository, _productRepository);
@@ -44,7 +44,7 @@ namespace E_Commerce.Application.Features.CartItem.Handlers.Commands
             cartItem.Price = cartItem.Product.Price;
 
             cartItem = await _cartItemRepository.Add(cartItem);
-            return cartItem.Id;
+            return Unit.Value;
         }
     }
 }

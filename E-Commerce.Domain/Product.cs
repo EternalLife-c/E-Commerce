@@ -12,8 +12,8 @@ namespace E_Commerce.Domain
         public decimal Price { get; set; }
         public int QuantityInStock { get; set; }
         public string ThumbnailPath { get; set; }
-        public bool IsAvailable { get; set; } = true;
-        public int? CategoryId { get; set; }
+        public bool IsAvailable { get; set; }
+        public Guid? CategoryId { get; set; }
 
         //Navigation Properties
         public Category? Category { get; set; }

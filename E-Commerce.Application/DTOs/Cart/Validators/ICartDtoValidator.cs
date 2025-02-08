@@ -17,7 +17,8 @@ namespace E_Commerce.Application.DTOs.Cart.Validators
             _userRepository = userRepository;
 
             RuleFor(e => e.UserId)
-                .GreaterThan(0).WithMessage("{PropertyName} does not exist.")
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty or default.")
+                .Must(id => id != Guid.Empty).WithMessage("{PropertyName} cannot be an empty GUID.")
                 .MustAsync(async (id, token) =>
                 {
                     var UserExists = await _userRepository.Exsits(id);

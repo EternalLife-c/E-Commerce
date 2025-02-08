@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.DTOs.Category
 {
-    public class CategoryDto : BaseDto, ICategoryDto
+    public class CategoryDto : ICategoryDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

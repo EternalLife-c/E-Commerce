@@ -7,6 +7,6 @@ namespace E_Commerce.Application.Features.Product.Requests.Commands
 {
     public class DeleteProductCommand : IRequest<Unit>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

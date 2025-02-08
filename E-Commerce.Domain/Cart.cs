@@ -9,7 +9,7 @@ namespace E_Commerce.Domain
     public class Cart : BaseDomainEntity
     {
         public decimal TotalCartPrice { get; set; }
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         //Navigation Properties
         public User User { get; set; }

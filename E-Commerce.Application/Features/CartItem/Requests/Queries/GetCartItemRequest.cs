@@ -8,6 +8,6 @@ namespace E_Commerce.Application.Features.CartItem.Requests.Queries
 {
     public class GetCartItemRequest : IRequest<Domain.CartItem>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

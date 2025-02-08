@@ -6,10 +6,9 @@ using System.Text;
 
 namespace E_Commerce.Application.DTOs.Category
 {
-    public class CreateCategoryDto : BaseDto, ICategoryDto
+    public class CreateCategoryDto : ICategoryDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<ProductDto> Products { get; set; }
     }
 }

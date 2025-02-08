@@ -6,7 +6,7 @@ using System.Text;
 
 namespace E_Commerce.Application.Features.Comment.Requests.Commands
 {
-    public class CreateCommentCommand : IRequest<int>
+    public class CreateCommentCommand : IRequest<Unit>
     {
         public CreateCommentDto CreateCommentDto { get; set; }
     }

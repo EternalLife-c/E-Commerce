@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Application.Features.Order.Handlers.Commands
 {
-    public class CreateOrdeCommandHandler : IRequestHandler<CreateOrdeCommand, int>
+    public class CreateOrdeCommandHandler : IRequestHandler<CreateOrdeCommand, Unit>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IUserRepository _userRepository;
@@ -31,7 +31,7 @@ namespace E_Commerce.Application.Features.Order.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateOrdeCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateOrdeCommand request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateOrderDtoValidator(_userRepository, _orderRepository, _productRepository);
@@ -50,7 +50,7 @@ namespace E_Commerce.Application.Features.Order.Handlers.Commands
             order.IsDone = false;
 
             await _orderRepository.Add(order);
-            return order.Id;
+            return Unit.Value;
         }
     }
 }
